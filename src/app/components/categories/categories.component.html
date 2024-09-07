@@ -1,0 +1,27 @@
+<section class="my-5">
+    <div class="container  ">
+        <h1 class="fw-bolder my-5 text-main fs-2 text-center">All Brands</h1>
+        <div class="row  g-4 ">
+            @for (cat of CategoriesList; track cat._id) {
+                <div class=" col-md-6 col-lg-4 col-xl-3 ">
+
+                    <div class="border product p-2"   >
+                       <div [routerLink]="['/blank/details',cat._id]" >
+                        <img [src]="cat.image" height="250px" class="w-100 mb-2" [alt]="cat.name">
+                        <h6 class="text-main text-center fw-bold">{{cat.name}}</h6>
+                     
+                       </div>
+                     </div>
+
+                  
+                </div>
+                 
+            }
+            
+
+
+            
+        </div>
+    </div>
+</section>
+

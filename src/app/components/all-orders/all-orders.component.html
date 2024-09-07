@@ -1,0 +1,29 @@
+ <section>
+    <div class="container bg-light m-2 p-2 shadow-lg mx-auto my-5">
+        <h1 class="fs-3 fw-bold mx-auto my-3">All orders</h1>
+<div class="row mx-2  p-5">
+    @for (orders of allorders; track $index) {
+        <div class="col-md-4 col-lg-3 border py-3    shadow mb-4">
+            <p class="fs-5 fw-bold text-main">order :{{$index + 1}}</p>
+            <div>
+                <p class="fw-semibold">city :{{orders.shippingAddress.city}}</p>
+                <p class="fw-semibold">details :{{orders.shippingAddress.details}}</p>
+                <p class="fw-semibold">phone :{{orders.shippingAddress.phone}}</p>
+             </div>
+        
+             <div>
+                <p class="fw-semibold">paymentMethodType :{{orders.paymentMethodType}}</p>
+             </div>
+             <div>
+                <p class="fw-semibold">totalOrderPrice :{{orders.totalOrderPrice}}</p>
+             </div>
+             <div>
+                <p class="fw-semibold">isDelivered :{{orders.isDelivered}}</p>
+              </div>
+        </div>
+    }
+</div>
+    
+
+    </div>
+ </section>

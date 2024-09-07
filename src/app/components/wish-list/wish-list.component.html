@@ -1,0 +1,37 @@
+<section>
+    <div class="container  my-5 ">
+        <h1 class="fw-bold text-center">My Wish List</h1>
+
+        <div class="d-flex justify-content-between  align-items-center  ">
+        </div>
+
+        @for (item of cartItems.data; track $index) {
+            <div class="row  mb-2  bg-body-tertiary  shadow-sm py-3">
+                <div class="col-1">
+                    <div>
+                        <img [src]="item.imageCover" class="w-100 my-1" [alt]="item.title">
+                    </div>
+                </div>
+    
+                <div class="col-11">
+                    <div class="d-flex justify-content-between  ">
+                        <div class=" ">
+                            <p class="fw-bold">{{item.title}}</p>
+                            <span class="text-main fw-bold">price: {{item.price}} EGP</span><br>
+                            <span  class="text-danger p-3  cursor-pointer "><i class="fa-solid fa-trash-arrow-up"  (click)="removeItem(item._id)"></i></span>
+                        </div>
+                        
+                     </div>
+                </div>
+                <button (click)="addCart(item._id)" class=" my-4 ms-auto w-25 d-block btn btn-main">add to Cart</button>
+
+            </div>
+
+
+        }
+
+        <!-- <button [routerLink]="['/blank/orders', cartItems._id]" class="btn btn-main d-block mx-auto w-25">Orders</button> -->
+
+
+    </div>
+</section>

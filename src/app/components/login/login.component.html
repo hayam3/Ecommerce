@@ -1,0 +1,43 @@
+<section >
+    <div class="container bg-light m-2 p-2 shadow-lg mx-auto my-5">
+        <h1 class="h2 fs-3 text-main fw-bold ">login now</h1>
+
+ <form [formGroup]="loginForm"  (ngSubmit)="login()">
+        
+        <div>
+                <label for="email">Email:</label>
+                <input id="email" type="text" class="form-control my-2 "  formControlName="email">
+
+                
+                @if ( loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+                    <p class="alert alert-danger ">Email is incorrect</p>
+                }
+         </div>
+                
+        <div>
+                <label for="password">Password:</label>
+                <input id="password" type="password" class="form-control my-2 "  formControlName="password">
+
+                @if ( loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
+                    <p class="alert alert-danger ">Password is incorrect</p>
+                }
+         </div>
+                
+           
+         @if (errorMessage) {
+            <p class="alert alert-danger p-2 w-50">{{errorMessage}}</p>
+
+        }
+        
+     <a class="fs-6 fw-bold forget "  routerLink="/auth/forget">Forget your Password ?</a>
+    <button class="btn btn-main ms-auto d-block my-5">Login Now
+        @if (isLoding== true) {
+            <span><i class="fas fa-spin fa-spinner"></i></span>
+
+        }
+    </button>
+                        
+                    
+</form>
+</div>
+</section>

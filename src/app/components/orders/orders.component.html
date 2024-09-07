@@ -1,0 +1,41 @@
+<section >
+    <div class="container bg-light m-2 p-2 shadow-lg mx-auto my-5">
+        <h1 class="h2 fs-3 text-main fw-bold ">Order Details</h1>
+
+ <form [formGroup]="orders" (ngSubmit)="orderSubmit()" >
+        
+        <div>
+                <label for="details">details:</label>
+                <textarea class="form-control my-2 " id="details" formControlName="details" ></textarea>
+
+                 
+                @if ( orders.get('details')?.errors && orders.get('details')?.touched) {
+                    <p class="alert alert-danger ">details is required</p>
+                }
+         </div>
+                
+        <div>
+                <label for="phone">phone:</label>
+                <input id="phone" type="tel" class="form-control my-2 "  formControlName="phone">
+
+                @if ( orders.get('phone')?.errors && orders.get('phone')?.touched) {
+                    <p class="alert alert-danger ">phone is required</p>
+                }
+         </div>
+        <div>
+                <label for="city">city:</label>
+                <input id="city" type="text" class="form-control my-2 "  formControlName="city">
+
+                @if ( orders.get('city')?.errors && orders.get('city')?.touched) {
+                    <p class="alert alert-danger ">city is required</p>
+                }
+         </div>
+                
+
+        
+    <button type="submit"  class="btn btn-main ms-auto d-block my-5">Check Out</button>
+                        
+                    
+</form>
+</div>
+</section>

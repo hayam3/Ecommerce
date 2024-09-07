@@ -1,0 +1,41 @@
+<section>
+    <div class="container  my-5 ">
+        <h1 class="fw-bold text-center">Shop cart</h1>
+
+        <div class="d-flex justify-content-between  align-items-center  ">
+            <p class="text-main fs-4 fw-bold">Total Cart Price: {{cartItems.totalCartPrice}} EGP</p>
+        <button (click)="clearCart()" class="btn btn-outline-danger my-4">Clear Cart</button>
+        </div>
+
+        @for (item of cartItems.products; track item.product._id) {
+            <div class="row  mb-2  bg-body-tertiary  shadow-sm py-3">
+                <div class="col-1">
+                    <div>
+                        <img [src]="item.product.imageCover" class="w-100 my-1" [alt]="item.product.title">
+                    </div>
+                </div>
+    
+                <div class="col-11">
+                    <div class="d-flex justify-content-between  ">
+                        <div class=" ">
+                            <p class="fw-bold">{{item.product.title}}</p>
+                            <span class="text-main fw-bold">price: {{item.price}} EGP</span><br>
+                            <span  class="text-danger p-3 cursor-pointer "><i class="fa-solid fa-trash-arrow-up"  (click)="removeItem(item.product._id)"></i></span>
+                        </div>
+                        <div  class=" align-content-center cursor-pointer">
+                        <span (click)="updateQuantity(item.product._id , item.count +1)" class="text-main px-1"><i class="fa-solid fa-circle-plus fa-xl"></i></span>
+                        <span class=" px-1">{{item.count}}</span>
+                        <span (click)="updateQuantity(item.product._id , item.count -1)" class="text-main px-1 cursor-pointer" ><i class="fa-solid fa-circle-minus fa-xl"></i></span>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+
+        }
+
+        <button [routerLink]="['/blank/orders', cartItems._id]" class="btn btn-main d-block mx-auto w-25">Orders</button>
+
+
+    </div>
+</section>

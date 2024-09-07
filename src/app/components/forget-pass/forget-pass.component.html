@@ -1,0 +1,69 @@
+<section>
+    <h1  class=" fs-3 text-center fw-medium text-main my-3">Forget password</h1>
+    <div class="container   m-2 p-2   mx-auto my-5">
+  @if (step==1) {
+    <form [formGroup]="verifyEmail"  class="bg-light m-2 p-2 shadow-lg"  (ngSubmit)="verifyEmailSubmit()">
+             
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" type="email" class="form-control my-2 "  formControlName="email">
+
+            
+            @if ( verifyEmail.get('email')?.errors && verifyEmail.get('email')?.touched) {
+                <p class="alert alert-danger ">Email is incorrect</p>
+            }
+     </div>
+
+     <button [disabled]="verifyEmail.invalid" class="btn btn-main ms-auto d-block my-5">Verify Email</button>
+
+        </form>
+  }
+  @else if (step==2) {
+    <form [formGroup]="verifyCode"  class="  bg-light m-2 p-2 shadow-lg" (ngSubmit)="verifyCodeSubmit()">
+             
+        <div>
+            <label for="resetCode">resetCode:</label>
+            <input id="resetCode" type="resetCode" class="form-control my-2 "  formControlName="resetCode">
+
+            
+            @if ( verifyCode.get('resetCode')?.errors && verifyCode.get('resetCode')?.touched) {
+                <p class="alert alert-danger ">resetCode is incorrect</p>
+            }
+     </div>
+
+     <button [disabled]="verifyCode.invalid" class="btn btn-main ms-auto d-block my-5">Verify resetCode</button>
+
+        </form>
+  }
+@else if (step==3) {
+    <form [formGroup]="resetPassword"  class="  bg-light m-2 p-2 shadow-lg" (ngSubmit)="resetPasswordSubmit()">
+             
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" type="email" class="form-control my-2 "  formControlName="email">
+
+            
+            @if ( resetPassword.get('email')?.errors && resetPassword.get('email')?.touched) {
+                <p class="alert alert-danger ">Email is incorrect</p>
+            }
+     </div>
+
+    <div class="my-4">
+            <label for="newPassword">newPassword:</label>
+            <input id="newPassword" type="Password" class="form-control my-2 "  formControlName="newPassword">
+
+            
+            @if ( resetPassword.get('newPassword')?.errors && resetPassword.get('newPassword')?.touched) {
+                <p class="alert alert-danger ">newPassword is incorrect</p>
+            }
+     </div>
+
+     <button [disabled]="resetPassword.invalid" class="btn btn-main ms-auto d-block my-5">new Password</button>
+
+        </form>
+}
+
+   
+
+    </div>
+</section>
